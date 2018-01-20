@@ -1,5 +1,5 @@
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,29 +9,53 @@ import javax.swing.JPanel;
 
 public class Runner {
 
-	static int width = 900;
+	static int width = 800;
 	static int height = 800;
 	static JFrame window = new JFrame("FRC PowerUp Simulation");
+	static JButton[] button = new JButton[8];
 	static JPanel panel = new JPanel();
-	static JButton button1 = new JButton("1");
+	
 
 	public static void main(String args[]) {
-		window.setVisible(true);
 		window.setLayout(null);
+		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel.setLayout(new GridLayout(4,2));
+		panel.setSize(width, height - (height/4));
+		panel.setLocation(0, 200);
+		
 		window.setSize(width, height);
-		panel.setBackground(Color.CYAN);
-		button1.setSize(50, 50);
-		button1.setLocation(100, 100);
-		button1.addActionListener(new button1Listener());
-		window.add(button1);
+		window.add(panel);
+		
+		for(int i = 0; i < 8; i++){
+			button[i] = new JButton("" + (i+1));
+			panel.add(button[i]);
+			button[i].addActionListener(new playListener());
+		}
+//		button.setSize(100, 100);
+//		button.setLocation(100, 100);
+//		
+//		window.add(button);
+//		button.addActionListener(new playListener());
+
+		window.setBackground(Color.blue);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 	}
 
 }
 
-class button1Listener implements ActionListener {
+class playListener implements ActionListener {
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("NOT DUMB");
+	public void actionPerformed(ActionEvent arg0) {
+
 	}
 }
