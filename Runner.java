@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,11 +20,18 @@ public class Runner {
 		window.setLayout(null);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(width, height);
-		panel.setSize(width - 200, height - 200);
-		window.add(panel);
 		panel.setBackground(Color.CYAN);
 		button1.setSize(50, 50);
 		button1.setLocation(100, 100);
-		panel.add(button1);
+		button1.addActionListener(new button1Listener());
+		window.add(button1);
+	}
+
+}
+
+class button1Listener implements ActionListener {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("NOT DUMB");
 	}
 }
